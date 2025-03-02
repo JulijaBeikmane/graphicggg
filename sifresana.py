@@ -73,3 +73,55 @@ button2.pack()
 
 root.geometry("400x300")
 root.mainloop()
+
+
+
+
+
+
+import tkinter as tk
+
+
+burti = ["a", "ā", "b", "c", "č", "d", "e", "ē", "f", "g", "ģ", "h", "i", "ī", "j", "k", "ķ", "l", "ļ", "m", "n", "ņ", "o", "p", "r", "s", "š", "t", "u", "ū", "v", "z", "ž"]
+
+def sifresana():
+    plain_text = ievade1.get().lower()
+    try:
+        key = int(ievade2.get())
+    except ValueError:
+        label3.config(text="Lūdzu, ievadiet skaitli otrajā laukā!")
+        return
+    
+    cipher_text = ""
+    for letter in plain_text:
+        if letter in burti:
+            index = burti.index(letter)
+            new_index = (index + key) % len(burti)
+            cipher_text += burti[new_index]
+        else:
+            cipher_text += letter
+    
+    label3.config(text=f"Šifrēts teksts: {cipher_text}")
+
+
+root = tk.Tk()
+root.title("Šifrēšana")
+root.geometry("400x300")
+
+label = tk.Label(root, text="Ievadiet vārdu un nobīdi:")
+label.pack()
+
+ievade1 = tk.Entry(root)
+ievade1.pack(pady=5)
+
+ievade2 = tk.Entry(root)
+ievade2.pack(pady=5)
+
+button = tk.Button(root, text="Šifrēt", command=sifresana)
+button.pack(pady=5)
+
+label3 = tk.Label(root, text="")
+label3.pack()
+
+root.mainloop()
+
