@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+</head>
+<body>
+    {% for blog_post in ieraksti: %}
+        <h1>{{ blog_post["title"] }}</h1>
+        <h2>{{ blog_post["subtitle"] }}</h2>
+        <h3>{{ blog_post["title"][1]}}</h3>
+        <h4>{{ blog_post["subtitle"][1]}}</h4>
+    {% endfor %}
+</body>
+</html>
